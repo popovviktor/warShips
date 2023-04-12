@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.myapplication.data.api.models.ArrayInFindGamesResponse
@@ -58,7 +59,12 @@ class AllJAvailableGamesFragment : Fragment(),AdapterForAllJoinGames.OnJoinBattl
             }
 
     override fun onJoinThisBattle(item: ArrayInFindGamesResponse) {
-        System.out.println(item)
+        val mytoken = vmreg.token.value.toString()
+        vmbattle.joinThisBattle(item.id.toString(),item.token1.toString(),mytoken = mytoken)
+        vmbattle.connectbattle_id.observe(requireActivity() as MainActivity, Observer {
+            System.out.println("Коннект")
+            activity?.findNavController(R.id.nav_host)?.navigate(R.id.battleFragment)
+        })
     }
 
 }

@@ -48,5 +48,10 @@
         android:id="@+id/homeFragment"
         android:name="com.myapplication.testwsh.screens.navfragments.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/battleFragment"
+        android:name="com.myapplication.testwsh.screens.battle.BattleFragment"
+        android:label="fragment_battle"
+        tools:layout="@layout/fragment_battle" />
 
 </navigation>
