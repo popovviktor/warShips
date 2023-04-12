@@ -26,9 +26,9 @@ class MainViewModel @Inject constructor(
     private val _battle_id = MutableLiveData<NetworkResult<CreateBattleResponse>>()
     val battle_id:LiveData<NetworkResult<CreateBattleResponse>>
         get() = _battle_id
-    fun createBattle(token:String){
+    fun createBattle(token:String,login:String){
         viewModelScope.launch {
-            createBattleUseCase.invoke(CreateBattleTokenReceive(token = token))?.let {
+            createBattleUseCase.invoke(CreateBattleTokenReceive(token = token, login = login)).let {
                 _battle_id.value = it
             }
         }

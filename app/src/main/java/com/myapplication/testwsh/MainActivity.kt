@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val vm:MainViewModel by viewModels()
-    private val vmautologin: ViewModelAutoLogin by viewModels()
     private val vmreg:ViewModelRegisterLoginToken by viewModels()
     lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,13 +30,16 @@ class MainActivity : AppCompatActivity() {
         navController.navigate(R.id.registerFragment)
         bottomnav.setOnItemSelectedListener {
             when(it.itemId) {
-                (R.id.nav_home) -> {
+                (R.id.homeFragment) -> {
+                    navController.popBackStack()
                     navController.navigate(R.id.homeFragment)
                 }
                 (R.id.nav_chat) -> {
+                    navController.popBackStack()
                     navController.navigate(R.id.nav_chat)
                 }
                 (R.id.nav_profile) -> {
+                    navController.popBackStack()
                     navController.navigate(R.id.nav_profile)
                 }
                 else -> {}

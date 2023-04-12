@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
             funclickcreategame()
         }
         binding.btnAllJoin.setOnClickListener {
-
+            funclickcAllGamesAvailiblegame()
         }
     }
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,5 +43,8 @@ class HomeFragment : Fragment() {
     }
     fun funclickcreategame(){
         activity?.findNavController(R.id.nav_host)?.navigate(R.id.createGameFragment)
+    }
+    fun funclickcAllGamesAvailiblegame(){
+        activity?.findNavController(R.id.nav_host)?.navigate(R.id.allJAvailableGamesFragment)
     }
 }
