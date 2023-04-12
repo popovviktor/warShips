@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
         get() = _allfindgames
     fun getAllFindGames(){
         viewModelScope.launch {
-            getallfindgamesUseCase.invoke()?.let {
+            getallfindgamesUseCase.invoke().let {
                 _allfindgames.value = it
             }
         }
