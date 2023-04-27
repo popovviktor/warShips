@@ -14,9 +14,12 @@ import com.myapplication.testwsh.MainViewModel
 import com.myapplication.testwsh.R
 import com.myapplication.testwsh.ViewModelRegisterLoginToken
 import com.myapplication.testwsh.databinding.FragmentCreateGameBinding
+import com.myapplication.testwsh.screens.battle.services.ServiceLoadStepInBattle
+import kotlinx.coroutines.*
 
 
 class CreateGameFragment : Fragment() {
+    private val corutinesScope = CoroutineScope(Dispatchers.Main)
     private val vmreg: ViewModelRegisterLoginToken by activityViewModels()
     private val vmbattle:MainViewModel by activityViewModels()
     lateinit var binding:FragmentCreateGameBinding
@@ -25,6 +28,9 @@ class CreateGameFragment : Fragment() {
         createBattle()
         vmbattle.battle_id.observe(requireActivity() as MainActivity, Observer {
             binding.textinfo.text = "БИТВА СОЗДАНААААА!"
+            corutinesScope.launch {
+                var bool = true
+            }
         })
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +45,11 @@ class CreateGameFragment : Fragment() {
         return binding.root
     }
 
+    override fun onPause() {
+        super.onPause()
+        corutinesScope.cancel()
+        System.out.println("PauseFragment")
+    }
     companion object {
        @JvmStatic
         fun newInstance() = CreateGameFragment()

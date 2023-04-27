@@ -12,6 +12,7 @@ import com.myapplication.data.api.models.FindGamesResponse
 import com.myapplication.data.utils.NetworkResult
 import com.myapplication.testwsh.databinding.ActivityMainBinding
 import com.myapplication.testwsh.screens.RegisterFragment
+import com.myapplication.testwsh.screens.battle.services.ServiceLoadStepInBattle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
